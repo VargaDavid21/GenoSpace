@@ -1,0 +1,13 @@
+.app-main-content {
+  flex-grow: 1; // This will make the main content fill the remaining space
+  display: flex; // This will allow you to use flex properties for children
+  align-items: center; // Center children horizontally
+  justify-content: center; // Center children vertically
+  overflow: auto; // This will handle any overflow within the main content itself
+}
+
+.profile-container {
+  position: absolute; // Position it absolutely within the main component
+  top: 10px;          // Adjust as needed to set the distance from the top
+  right: 10px;        // Adjust as needed to set the distance from the right
+}

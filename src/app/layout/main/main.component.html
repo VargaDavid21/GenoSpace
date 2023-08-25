@@ -1,0 +1,8 @@
+<div *ngIf="authChecked">
+  <div class="main-content" *ngIf="!loading && !userSignedIn">
+    <app-landing-page></app-landing-page>
+  </div>
+  <div class="main-content" *ngIf="!loading && userSignedIn">
+    <router-outlet></router-outlet>
+  </div>
+</div>

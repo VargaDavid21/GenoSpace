@@ -1,0 +1,39 @@
+.landing-page-container {
+  font-family: 'Raleway', sans-serif; // Add this line
+  text-align: center;
+  margin: 100px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 5%;
+}
+
+.logo {
+  display: block;
+  max-width: 200px; // Adjust as needed
+  margin: 0 auto 20px; // Center the logo and add some space below it
+}
+
+.button-container {
+  margin: 20px;
+}
+
+.sign-in, .sign-up {
+  padding: 15px 30px; // Increase padding
+  margin: 10px;
+  font-size: 18px; // Increase font size
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+h1 {
+  font-size: 2.5em; // Increase h1 size
+}
+
+p {
+  font-size: 1.2em; // Increase paragraph size
+}
+
+.sign-in:hover, .sign-up:hover {
+  background-color: #ddd;
+}

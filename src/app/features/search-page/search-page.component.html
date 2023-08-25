@@ -1,0 +1,23 @@
+<div class="search-container">
+  <button class="logout-button" (click)="logout()">
+    <span class="logout-text">Logout</span>
+  </button>
+  <img class="logo" src="assets/logo_transparent.png" alt="Project Logo" />
+  <div class="search-bar">
+    <input type="text" placeholder="Enter Entrez Number" [(ngModel)]="entrezNumber" />
+    <div class="button-container">
+      <button mat-raised-button color="primary" class="search-button" (click)="search()"><i class="material-icons">Search</i></button>
+    </div>
+  </div>
+  <div *ngIf="searchResults">
+    <div *ngFor="let result of searchResults" class="result-card">
+      <h3 class="title">{{ result.title }}</h3>
+      <p class="author"><strong>Authors:</strong> {{ result.AuthorList.Author }}</p>
+      <p class="source"><strong>Source:</strong> {{ result.source }}</p>
+      <p class="pubdate"><strong>Publication Date:</strong> {{ result.pubDate }}</p>
+      <p class="volume"><strong>Volume:</strong> {{ result.volume }}</p>
+      <a class="link" [href]="'https://doi.org/' + result.DOI" target="_blank">DOI Link</a>
+      <button (click)="downloadPdf(result)">Download PDF</button>
+    </div>
+  </div>
+</div>

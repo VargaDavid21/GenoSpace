@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+body {
+  font-size: 18px; // Increase the base size
+  font-family: 'Roboto', sans-serif;
+}
+
+.logo {
+  display: block;
+  max-width: 200px; // Adjust as needed
+  margin: 0 auto 20px; // Center the logo and add some space below it
+}
+
+.search-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.search-bar {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 18px; // Increase from 16px
+  outline: none;
+  font-family: 'Roboto', sans-serif;
+}
+
+button {
+  background-color: #696969;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px; // Increase from 16px
+  margin: 0 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition-duration: 0.3s;
+  font-family: 'Roboto', sans-serif;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+.material-icons {
+  font-size: 20px; // Increase from 20px
+}
+
+.result-card {
+  width: 300px; // Fixed width
+  height: auto; // Let the height adapt to the content
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  overflow: auto; // Allow the content to scroll if it overflows the container
+
+  .title {
+    font-size: 22px; // Increase from 18px
+    word-wrap: break-word; // Allow the words to break and wrap onto the next line
+    margin-bottom: 5px;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .author,
+  .source,
+  .pubdate,
+  .volume {
+    word-wrap: break-word; // Allow the words to break and wrap onto the next line
+    font-size: 16px;
+    margin-bottom: 5px;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+.logout-button {
+  font-family: 'Roboto', sans-serif;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  /* Add any styling you want here */
+}
+
+button.search-button i.material-icons {
+  vertical-align: middle;
+  margin: 0 auto;
+  line-height: normal; /* Adjust as needed */
+}
+
+button.search-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
+}
