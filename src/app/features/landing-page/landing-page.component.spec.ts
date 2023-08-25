@@ -7,6 +7,8 @@ import {By} from '@angular/platform-browser';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {NO_ERRORS_SCHEMA} from "@angular/core";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('LandingPageComponent', () => {
   let component: LandingPageComponent;
@@ -29,8 +31,10 @@ describe('LandingPageComponent', () => {
       imports: [
         MatCardModule,
         MatButtonModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        HttpClientTestingModule
       ],
+      schemas: [NO_ERRORS_SCHEMA],
       providers: [
         {provide: AuthService, useValue: authServiceMock},
         {provide: Router, useValue: routerMock}

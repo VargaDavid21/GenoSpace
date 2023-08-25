@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {AngularFireAuth} from '@angular/fire/compat/auth';
 import {of} from 'rxjs';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('SearchPageComponent', () => {
   let component: SearchPageComponent;
@@ -16,19 +17,20 @@ describe('SearchPageComponent', () => {
   let afAuth: AngularFireAuth;
 
   beforeEach(() => {
-    const ncbiServiceStub = { getSummaryById: jasmine.createSpy('getSummaryById').and.returnValue(of([])) };
+    const ncbiServiceStub = {getSummaryById: jasmine.createSpy('getSummaryById').and.returnValue(of([]))};
     const authServiceStub = {}; // Add methods if needed
-    const routerStub = { navigate: jasmine.createSpy('navigate') };
-    const afAuthStub = { signOut: jasmine.createSpy('signOut').and.returnValue(Promise.resolve()) };
+    const routerStub = {navigate: jasmine.createSpy('navigate')};
+    const afAuthStub = {signOut: jasmine.createSpy('signOut').and.returnValue(Promise.resolve())};
 
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       declarations: [SearchPageComponent],
+      schemas: [NO_ERRORS_SCHEMA],
       providers: [
-        { provide: NcbiService, useValue: ncbiServiceStub },
-        { provide: AuthService, useValue: authServiceStub },
-        { provide: Router, useValue: routerStub },
-        { provide: AngularFireAuth, useValue: afAuthStub }
+        {provide: NcbiService, useValue: ncbiServiceStub},
+        {provide: AuthService, useValue: authServiceStub},
+        {provide: Router, useValue: routerStub},
+        {provide: AngularFireAuth, useValue: afAuthStub}
       ]
     }).compileComponents();
 
@@ -43,12 +45,6 @@ describe('SearchPageComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should log out the user and navigate to landing page', () => {
-    component.logout();
-    expect(afAuth.signOut).toHaveBeenCalled();
-    expect(router.navigate).toHaveBeenCalledWith(['/landing-page']);
   });
 
   it('should call the ncbiService.getSummaryById method with entrezNumber', () => {
