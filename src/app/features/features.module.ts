@@ -7,6 +7,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {FormsModule} from "@angular/forms";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -17,14 +18,15 @@ import {FormsModule} from "@angular/forms";
     LandingPageComponent,
     SearchPageComponent
   ],
-  imports: [
-    CommonModule,
-    MatCardModule,
-    MatButtonModule,
-    MatInputModule,
-    MatIconModule,
-    FormsModule,
-  ]
+    imports: [
+        CommonModule,
+        MatCardModule,
+        MatButtonModule,
+        MatInputModule,
+        MatIconModule,
+        FormsModule,
+        MatTooltipModule,
+    ]
 })
 export class FeaturesModule {
 }

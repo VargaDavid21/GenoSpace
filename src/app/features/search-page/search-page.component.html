@@ -1,14 +1,20 @@
 <div class="search-container">
+
   <button class="logout-button" (click)="logout()">
     <span class="logout-text">Logout</span>
   </button>
+
   <img class="logo" src="assets/logo_transparent.png" alt="Project Logo" />
+
   <div class="search-bar">
     <input type="text" placeholder="Enter Entrez Number" [(ngModel)]="entrezNumber" />
     <div class="button-container">
-      <button mat-raised-button color="primary" class="search-button" (click)="search()"><i class="material-icons">Search</i></button>
+      <button mat-raised-button color="primary" class="search-button" (click)="search()" [disabled]="isSearchDisabled()" [matTooltip]="tooltipMessage">
+        <i class="material-icons">Search</i>
+      </button>
     </div>
   </div>
+
   <div *ngIf="searchResults" >
     <div *ngFor="let result of searchResults" class="result-card" @fadeInOut>
       <h3 *ngIf="!isEmptyObject(result.Name)" class="name"><strong>Name:</strong> {{ result.Name }}</h3>

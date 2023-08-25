@@ -37,6 +37,7 @@ export class SearchPageComponent {
   entrezNumber: string = '';
   searchResults: any;
   error: string | null = null;
+  tooltipMessage: string = '';
 
   constructor(
     private ncbiService: NcbiService,
@@ -60,7 +61,6 @@ export class SearchPageComponent {
       }
     });
   }
-
 
   isEmptyObject(obj: any): boolean {
     return obj && Object.keys(obj).length === 0 && obj.constructor === Object;
@@ -106,5 +106,18 @@ export class SearchPageComponent {
     addProperty('DOI', result.DOI);
 
     pdf.save(result.Name.replace(/[<>:"/\\|?*]+/g, '_') + '.pdf');
+  }
+
+  isSearchDisabled(): boolean {
+    const numbers = this.entrezNumber.split(' ').map(n => n.trim());
+    const hasDuplicates = new Set(numbers).size !== numbers.length;
+
+    if (hasDuplicates) {
+      this.tooltipMessage = 'Please enter each number only once.';
+      return true;
+    }
+
+    this.tooltipMessage = '';
+    return false;
   }
 }

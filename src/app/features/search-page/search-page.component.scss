@@ -14,6 +14,9 @@ body {
 .search-container {
   text-align: center;
   padding: 20px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .search-bar {
@@ -22,11 +25,13 @@ body {
   max-width: 500px;
   margin: 20px auto;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
 input {
   flex-grow: 1;
+  width: 80%;
   padding: 10px;
   border: 2px solid #ccc;
   border-radius: 4px;
@@ -65,7 +70,7 @@ button:hover {
   height: auto;
   border: 1px solid #e0e0e0;
   padding: 15px;
-  margin-top: 20px;
+  margin: 20px auto;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   overflow: auto;
