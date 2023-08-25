@@ -1,5 +1,5 @@
 .landing-page-container {
-  font-family: 'Raleway', sans-serif; // Add this line
+  font-family: 'Raleway', sans-serif;
   text-align: center;
   margin: 100px;
   padding: 20px;
@@ -9,8 +9,8 @@
 
 .logo {
   display: block;
-  max-width: 200px; // Adjust as needed
-  margin: 0 auto 20px; // Center the logo and add some space below it
+  max-width: 200px;
+  margin: 0 auto 20px;
 }
 
 .button-container {
@@ -18,20 +18,20 @@
 }
 
 .sign-in, .sign-up {
-  padding: 15px 30px; // Increase padding
+  padding: 15px 30px;
   margin: 10px;
-  font-size: 18px; // Increase font size
+  font-size: 18px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 h1 {
-  font-size: 2.5em; // Increase h1 size
+  font-size: 2.5em;
 }
 
 p {
-  font-size: 1.2em; // Increase paragraph size
+  font-size: 1.2em;
 }
 
 .sign-in:hover, .sign-up:hover {

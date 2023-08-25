@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 
 body {
-  font-size: 18px; // Increase the base size
+  font-size: 18px;
   font-family: 'Roboto', sans-serif;
 }
 
 .logo {
   display: block;
-  max-width: 200px; // Adjust as needed
-  margin: 0 auto 20px; // Center the logo and add some space below it
+  max-width: 200px;
+  margin: 0 auto 20px;
 }
 
 .search-container {
@@ -30,7 +30,7 @@ input {
   padding: 10px;
   border: 2px solid #ccc;
   border-radius: 4px;
-  font-size: 18px; // Increase from 16px
+  font-size: 18px;
   outline: none;
   font-family: 'Roboto', sans-serif;
 }
@@ -43,7 +43,7 @@ button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 18px; // Increase from 16px
+  font-size: 18px;
   margin: 0 2px;
   cursor: pointer;
   border-radius: 4px;
@@ -56,22 +56,23 @@ button:hover {
 }
 
 .material-icons {
-  font-size: 20px; // Increase from 20px
+  font-size: 20px;
 }
 
 .result-card {
-  width: 300px; // Fixed width
-  height: auto; // Let the height adapt to the content
+  width: 80%;
+  max-width: 1200px;
+  height: auto;
   border: 1px solid #e0e0e0;
   padding: 15px;
   margin-top: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  overflow: auto; // Allow the content to scroll if it overflows the container
+  overflow: auto;
 
   .title {
-    font-size: 22px; // Increase from 18px
-    word-wrap: break-word; // Allow the words to break and wrap onto the next line
+    font-size: 22px;
+    word-wrap: break-word;
     margin-bottom: 5px;
     font-family: 'Roboto', sans-serif;
   }
@@ -80,7 +81,7 @@ button:hover {
   .source,
   .pubdate,
   .volume {
-    word-wrap: break-word; // Allow the words to break and wrap onto the next line
+    word-wrap: break-word;
     font-size: 16px;
     margin-bottom: 5px;
     font-family: 'Roboto', sans-serif;

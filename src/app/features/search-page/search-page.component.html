@@ -11,11 +11,22 @@
   </div>
   <div *ngIf="searchResults">
     <div *ngFor="let result of searchResults" class="result-card">
-      <h3 class="title">{{ result.title }}</h3>
-      <p class="author"><strong>Authors:</strong> {{ result.AuthorList.Author }}</p>
-      <p class="source"><strong>Source:</strong> {{ result.source }}</p>
-      <p class="pubdate"><strong>Publication Date:</strong> {{ result.pubDate }}</p>
-      <p class="volume"><strong>Volume:</strong> {{ result.volume }}</p>
+      <h3 *ngIf="!isEmptyObject(result.Name)" class="name"><strong>Name:</strong> {{ result.Name }}</h3>
+      <p *ngIf="!isEmptyObject(result.Description)" class="description"><strong>Description:</strong> {{ result.Description }}</p>
+      <p *ngIf="!isEmptyObject(result.Status)" class="status"><strong>Status:</strong> {{ result.Status }}</p>
+      <p *ngIf="!isEmptyObject(result.Chromosome)" class="chromosome"><strong>Chromosome:</strong> {{ result.Chromosome }}</p>
+      <p *ngIf="!isEmptyObject(result.MapLocation)" class="maplocation"><strong>Map Location:</strong> {{ result.MapLocation }}</p>
+      <p *ngIf="!isEmptyObject(result.GeneticSource)" class="geneticsource"><strong>Genetic Source:</strong> {{ result.GeneticSource }}</p>
+      <p *ngIf="!isEmptyObject(result.OtherAliases)" class="otheraliases"><strong>Other Aliases:</strong> {{ result.OtherAliases }}</p>
+      <p *ngIf="!isEmptyObject(result.OtherDesignations)" class="otherdesignations"><strong>Other Designations:</strong> {{ result.OtherDesignations }}</p>
+      <p *ngIf="!isEmptyObject(result.NomenclatureSymbol)" class="nomenclaturesymbol"><strong>Nomenclature Symbol:</strong> {{ result.NomenclatureSymbol }}</p>
+      <p *ngIf="!isEmptyObject(result.NomenclatureName)" class="nomenclaturename"><strong>Nomenclature Name:</strong> {{ result.NomenclatureName }}</p>
+      <p *ngIf="!isEmptyObject(result.NomenclatureStatus)" class="nomenclaturestatus"><strong>Nomenclature Status:</strong> {{ result.NomenclatureStatus }}</p>
+      <p *ngIf="!isEmptyObject(result.GeneWeight)" class="geneweight"><strong>Gene Weight:</strong> {{ result.GeneWeight }}</p>
+      <p *ngIf="!isEmptyObject(result.Summary)" class="summary"><strong>Summary:</strong> {{ result.Summary }}</p>
+      <p *ngIf="!isEmptyObject(result.ChrSort)" class="chrsort"><strong>Chromosome Sort:</strong> {{ result.ChrSort }}</p>
+      <p *ngIf="!isEmptyObject(result.ChrStart)" class="chrstart"><strong>Chromosome Start:</strong> {{ result.ChrStart }}</p>
+      <p *ngIf="result.Organism && !isEmptyObject(result.Organism.ScientificName)" class="scientificname"><strong>Scientific Name:</strong> {{ result.Organism.ScientificName }}</p>
       <a class="link" [href]="'https://doi.org/' + result.DOI" target="_blank">DOI Link</a>
       <button (click)="downloadPdf(result)">Download PDF</button>
     </div>

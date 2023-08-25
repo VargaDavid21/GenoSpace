@@ -9,9 +9,9 @@ function addWrappedText(pdf: jsPDF, text: string, x: number, y: number, maxWidth
   const lines = pdf.splitTextToSize(text, maxWidth);
   for (let i = 0; i < lines.length; i++) {
     pdf.text(lines[i], x, y);
-    y += lineHeight; // increment y by lineHeight for every line
+    y += lineHeight;
   }
-  return y; // return the updated y value
+  return y;
 }
 
 @Component({
@@ -22,6 +22,7 @@ function addWrappedText(pdf: jsPDF, text: string, x: number, y: number, maxWidth
 export class SearchPageComponent {
   entrezNumber: string = '';
   searchResults: any;
+  error: string | null = null;
 
   constructor(
     private ncbiService: NcbiService,
@@ -33,14 +34,27 @@ export class SearchPageComponent {
 
   search() {
     this.ncbiService.getSummaryById(this.entrezNumber).subscribe((results) => {
-      this.searchResults = results;
-      console.log('Search results:', results);
+      this.searchResults = results.slice(0, 2);
+      this.error = null;
+
+      for (const result of results) {
+        if (result.Organism && result.Organism.ScientificName !== 'Homo sapiens') {
+          this.searchResults = null;
+          this.error = "No Homo Sapien found";
+          return;
+        }
+      }
     });
+  }
+
+
+  isEmptyObject(obj: any): boolean {
+    return obj && Object.keys(obj).length === 0 && obj.constructor === Object;
   }
 
   logout() {
     this.afAuth.signOut().then(() => {
-      this.router.navigate(['/landing-page']); // Navigate to the landing page
+      this.router.navigate(['/landing-page']);
     });
   }
 
@@ -51,37 +65,32 @@ export class SearchPageComponent {
     const addProperty = (label: string, value: any) => {
       if (Array.isArray(value)) {
         value = value.join(', ');
+      } else if (typeof value === 'object') {
+        if (this.isEmptyObject(value)) return;
+        value = JSON.stringify(value);
       }
-      if (value !== undefined && value !== null && value !== '' && (typeof value !== 'object' || value.length > 0)) {
+      if (value !== undefined && value !== null && value !== '') {
         y = addWrappedText(pdf, `${label}: ${value}`, 10, y, 180, 7);
       }
     };
 
-    addProperty('ID', result.id);
-    addProperty('Publication Date', result.pubDate);
-    addProperty('ePub Date', result.ePubDate);
-    addProperty('Source', result.source);
-    addProperty('Last Author', result.lastAuthor);
-    addProperty('Title', result.title);
-    addProperty('Volume', result.volume);
-    addProperty('Issue', result.issue);
-    addProperty('Pages', result.pages);
-    addProperty('Nlm Unique ID', result.nlmUniqueID);
-    addProperty('ISSN', result.ISSN);
-    addProperty('ESSN', result.ESSN);
-    addProperty('Record Status', result.recordStatus);
-    addProperty('Publication Status', result.pubStatus);
+    addProperty('Name', result.Name);
+    addProperty('Description', result.Description);
+    addProperty('Summary', result.Summary)
+    addProperty('Status', result.Status);
+    addProperty('Chromosome', result.Chromosome);
+    addProperty('Genetic Source', result.GeneticSource);
+    addProperty('Map Location', result.MapLocation);
+    addProperty('Other Designations', result.OtherDesignations);
+    addProperty('Gene Weight', result.GeneWeight);
+    addProperty('Chromosome Sort', result.ChrSort);
+    addProperty('Chromosome Start', result.ChrStart);
+    addProperty('Other Aliases', result.OtherAliases);
+    addProperty('Nomenclature Symbol', result.NomenclatureSymbol);
+    addProperty('Nomenclature Name', result.NomenclatureName);
+    addProperty('Nomenclature Status', result.NomenclatureStatus);
     addProperty('DOI', result.DOI);
-    addProperty('Has Abstract', result.hasAbstract);
-    addProperty('PMC Ref Count', result.pmcRefCount);
-    addProperty('Full Journal Name', result.fullJournalName);
-    addProperty('eLocation ID', result.eLocationID);
-    addProperty('SO', result.SO);
-    addProperty('Author List', result.authorList.join(', '));
-    addProperty('Language List', result.langList.join(', '));
-    addProperty('Publication Type List', result.pubTypeList.join(', '));
-    addProperty('Article IDs', result.articleIds.join(', '));
 
-    pdf.save(result.title.replace(/[<>:"/\\|?*]+/g, '_') + '.pdf');
+    pdf.save(result.Name.replace(/[<>:"/\\|?*]+/g, '_') + '.pdf');
   }
 }

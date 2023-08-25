@@ -1,12 +1,12 @@
 .app-container {
   display: flex;
   flex-direction: column;
-  align-items: center; // Center horizontally
-  justify-content: center; // Center vertically
-  height: 100vh; // This ensures the total height matches the viewport
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .app-main-content {
-  flex-grow: 1; // This will make the main content fill the remaining space
-  overflow: auto; // This will handle any overflow within the main content itself
+  flex-grow: 1;
+  overflow: auto;
 }
