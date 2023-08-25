@@ -4,6 +4,7 @@ import {AuthService} from "../../services/auth/auth.service";
 import {Router} from "@angular/router";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {jsPDF} from "jspdf";
+import {trigger, transition, style, animate, query, stagger} from '@angular/animations';
 
 function addWrappedText(pdf: jsPDF, text: string, x: number, y: number, maxWidth: number, lineHeight: number) {
   const lines = pdf.splitTextToSize(text, maxWidth);
@@ -17,7 +18,20 @@ function addWrappedText(pdf: jsPDF, text: string, x: number, y: number, maxWidth
 @Component({
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
-  styleUrls: ['./search-page.component.scss']
+  styleUrls: ['./search-page.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      transition('* <=> *', [
+        query(':enter', [
+          style({opacity: 0, transform: 'translateY(100%)'}),
+          stagger('100ms', [
+            animate('500ms ease-in', style({opacity: 1, transform: 'translateY(0%)'}))
+          ])
+        ], {optional: true}),
+        query(':leave', animate('500ms ease-out', style({opacity: 0})), {optional: true})
+      ])
+    ])
+  ]
 })
 export class SearchPageComponent {
   entrezNumber: string = '';

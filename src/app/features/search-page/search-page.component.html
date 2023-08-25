@@ -9,8 +9,8 @@
       <button mat-raised-button color="primary" class="search-button" (click)="search()"><i class="material-icons">Search</i></button>
     </div>
   </div>
-  <div *ngIf="searchResults">
-    <div *ngFor="let result of searchResults" class="result-card">
+  <div *ngIf="searchResults" >
+    <div *ngFor="let result of searchResults" class="result-card" @fadeInOut>
       <h3 *ngIf="!isEmptyObject(result.Name)" class="name"><strong>Name:</strong> {{ result.Name }}</h3>
       <p *ngIf="!isEmptyObject(result.Description)" class="description"><strong>Description:</strong> {{ result.Description }}</p>
       <p *ngIf="!isEmptyObject(result.Status)" class="status"><strong>Status:</strong> {{ result.Status }}</p>
